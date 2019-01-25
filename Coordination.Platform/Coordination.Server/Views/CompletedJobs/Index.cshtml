@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Coordination.Model.Job>
+@using Coordination.Model;
+@{
+    ViewBag.Title = "Job";
+}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoo4BtS4iNxYjWhjdtPfQpQSnQB6cz7fo"></script>
+<script src="~/Scripts/JS/map_common.js"></script>
+<h2>Completed Jobs</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            Completed by 
+        </th>
+    </tr>
+    @foreach (Coordination.Model.Job job in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => job.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => job.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => job.ID)
+            </td>
+            <td>
+                @{var jobAssignment = job.JobAssignments.FirstOrDefault(j => j.Approved);
+                    if (jobAssignment != null)
+                    {
+                        ViewContext.Writer.Write(jobAssignment.User.Username);
+                    }
+                }
+            </td>
+            <td>
+
+                <div id="map_canvas_@job.ID" class="map_canvas"></div>
+                <script>
+                    var map = initMap("map_canvas_@job.ID", "@job.Latitude", "@job.Longitude");
+                    createJobMarker(map,"@job.ID", "@job.JobName", "@job.Latitude", "@job.Longitude");
+
+                </script>
+
+            </td>
+
+        </tr>
+
+    }
+</table>

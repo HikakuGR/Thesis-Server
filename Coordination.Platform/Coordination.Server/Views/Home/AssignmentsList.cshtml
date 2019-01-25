@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Coordination.Model.JobAssignment>
+
+    
+        @foreach (Coordination.Model.JobAssignment assignment in Model)
+        {
+            <div class="row">
+              
+                
+                <div class="col-md-7">
+                    <h1>@assignment.User.Username requests job @assignment.Job.ID.ToString() (@assignment.Job.JobName)</h1>
+                </div>
+                <div class="btn-group col-md-5" role="group" >
+                    <button type="button" onclick="assignmentAction(true,@assignment.ID);" class="btn btn-xs">Accept</button>
+                    <button type="button" onclick="assignmentAction(false,@assignment.ID);" class="btn btn-xs">Decline</button>
+                </div>
+
+                
+            </div>
+        }
+            

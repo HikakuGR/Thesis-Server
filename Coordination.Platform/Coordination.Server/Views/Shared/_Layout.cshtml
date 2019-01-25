@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Coordination</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/jquery")
+        @Styles.Render("~/Content/bootstrap")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <script type="text/javascript"> 
+            var constants = {};
+            constants.Root = "@Url.Content("~")";
+        </script>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("Coordination", "Index", "Home")</p>
+                    <br>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Users", "Index", "User")</li>
+                        <li>@Html.ActionLink("Jobs", "Index", "Job")</li>
+                        <li>@Html.ActionLink("Completed Jobs!", "Index", "CompletedJobs")</li>
+                        
+                    </ul>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper  clear-fix">
+                @if (ViewData["ErrorMessage"] != null) {<h3 style="color:red">@ViewData["ErrorMessage"]</h3>
+                }
+                @RenderBody()
+                 
+                
+               
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Coordination</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,30 @@
+﻿@model Coordination.Model.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username): @Html.ValueFor(model => Model.Username )
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password): @Html.ValueFor(model => Model.Password)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email): @Html.ValueFor(model => Model.Email)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ID): @Html.ValueFor(model => Model.ID)
+        </dt>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

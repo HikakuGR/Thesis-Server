@@ -1,0 +1,20 @@
+﻿
+<div id="map_canvas" class="map_canvas"></div>
+<script>
+
+
+
+    var map = initMap("map_canvas", "39.00035", "23.48585");
+    @foreach(Coordination.Model.Job job in Model.Jobs)
+    {
+        string markerID = "job" + job.ID;
+        ViewContext.Writer.Write("createJobMarker(map,\"" + job.ID + "\", \"" + job.JobName+"\", \""+job.Latitude+"\", \""+job.Longitude+"\",\""+markerID+"\");");
+    }
+    @foreach(Coordination.Model.User user in Model.Users)
+    {
+        string markerID = "user" + user.ID;
+        ViewContext.Writer.Write("createUserMarker(map, \"" + user.Username + "\", \"" + user.Latitude + "\", \"" + user.Longitude + "\",\"" + markerID + "\");");
+    }
+
+
+</script>

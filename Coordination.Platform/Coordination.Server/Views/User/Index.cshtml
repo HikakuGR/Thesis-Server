@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Coordination.Model.User>
+@using Coordination.Model;
+    @{
+        ViewBag.Title = "User";
+    }
+
+<h2>Users</h2>
+<p>
+    @Html.ActionLink("Create New User", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+        </tr>
+        @foreach (Coordination.Model.User user in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.ID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = user.ID })                    
+                    @Html.ActionLink("Delete", "Delete", new { id = user.ID })
+                </td>
+            </tr>
+        }
+    </table>

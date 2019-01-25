@@ -1,0 +1,20 @@
+﻿@model Coordination.Server.ViewModels.HomeMapViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoo4BtS4iNxYjWhjdtPfQpQSnQB6cz7fo"></script>
+<script src="~/Scripts/JS/map_common.js"></script>
+<script src="~/Scripts/JS/home.js"></script>
+<button onclick="onMapRefresh();">Refresh Map</button>
+<div class="row">
+    <div style="float:left; width: 20%" class="col-md-7" id="mapContainer">@Html.Action("Map")</div>
+
+    <div style="float:right;" class="col-md-5" id="assignmentsList">
+        @Html.Action("AssignmentsList")
+
+    </div>
+    </div>
+    <div class="row" id="approvedAssignments">
+        @Html.Action("ApprovedAssignments") 
+    </div>
+
